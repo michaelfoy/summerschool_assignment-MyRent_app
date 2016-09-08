@@ -23,10 +23,10 @@ This app serves as a useful resource for analysis of the rental property market,
  Administrators have the highest level of access, they can add new (or delete) tenants and landlords. They also can see which tenant lives where (this is not visible to tenants or landlords) and the total income of each landlord. To easily view this data an administrator can sort the portfolio of residences according to a residence's attribute, also they have access to a visual chart of all the registered rental income which is divided according to each landlord's share. As the administrator has no direct access to the properties, they have no permissions to modify to the data stored on them.
 
 The app was developed using the Play MVC framework version 1.4.1 and the Eclipse IDE.  
-The commit history can be viewed on BitBucket (username: michaelfoy)
+The commit history can be viewed on **BitBucket (username: michaelfoy)**
 
 It has been deployed using Heroku, and can be viewed at:  
-org-wit-myrent-06695779.herokuapp.com
+**org-wit-myrent-06695779.herokuapp.com**
 
 
 Instructions
