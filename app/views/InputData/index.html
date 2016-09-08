@@ -1,0 +1,95 @@
+#{extends 'main.html' /} #{set title:'Publish data on your Residence' /}
+<!-- INPUT DATA PAGE -->
+<!-- Menu -->
+<section class="ui four item menu">
+	<a class="active item" href="/lconfig"><h3>MyAccount</h3></a>
+	<a class="item" href="/lreport"><h3>Report</h3></a>
+	<a class="item" href="/message"><h3>Contact</h3></a>
+	<a class="item" href="/llogout"><h3>Logout</h3></a>
+</section>
+
+<!-- Main Content  -->
+<section class="ui segment">
+		<div class="ui stackable two column grid">
+			<div class="ui column">
+				<form action="/inputdata/${user.id}" id="newResidence" class="ui fluid form segment" method="POST">
+					<h5>Please input residence data</h5>
+
+					<!-- Geolocation -->
+					<div class="ui segment">
+						<label>Location</label>
+						<div class="field">
+							<input type="text" id="geolocation" name="location"
+								value="53.3473860, -6.2590626" readonly class="input-medium">
+						</div>
+						<div class="field">
+							<input type="text" id="eicode" name="eircode"
+								placeholder="EIRCODE" maxlength="7" minlength="7">
+						</div>
+					</div>
+
+					<!--  Rent & Bedrooms -->
+					<div class="ui two column grid">
+						<div class="ui column">
+							<div class="ui basic segment">
+								<div class="ui fluid labeled input">
+									<div class="ui label">Rent (€)</div>
+									<input placeholder="Amount" name="rent" type="text">
+								</div>
+							</div>
+						</div>
+						<div class="ui column">
+							<div class="ui basic segment">
+								<div class="ui fluid labeled input">
+									<div class="ui label">Bedrooms</div>
+									<input placeholder="3" name="bedrooms" type="text">
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!--  Bathrooms & Area -->
+					<div class="ui two column grid">
+						<div class="ui column">
+							<div class="ui basic segment">
+								<div class="ui fluid labeled input">
+									<div class="ui label">Bathrooms</div>
+									<input placeholder="2" name="numberBathrooms" type="text">
+								</div>
+							</div>
+						</div>
+						<div class="ui column">
+							<div class="ui basic segment">
+								<div class="ui fluid labeled input">
+									<div class="ui label">Area (m²)</div>
+									<input placeholder="200" name="area" type="text">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Residence Type -->
+					<div class="ui basic segment">
+						<select name="residenceType" class="ui search dropdown">
+							<option value="">Residence Type</option>
+							<option value="apartment|flat">Apartment | Flat</option>
+							<option value="studio">Studio</option>
+							<option data-value="house">House</option>
+						</select>
+					</div>
+					<button type="submit" class="ui blue submit button">Register</button>
+          <div class="ui error message"></div>
+				</form>
+			</div>
+			
+			<!-- map and eircode search window -->
+			<div class="ui column">
+				<div id="map-canvas" class="ui 4:3 embed"></div>
+				<div class="ui hidden divider"></div>
+				<iframe class="ui fluid" src="https://finder.eircode.ie/#/" style="border:none" height="400" width="100%"></iframe>
+			</div>
+		</div>
+</section>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDX7xZ8Q_uYysdgojoZ-qhJtlpjXF3H85M&sensor=false"></script>
+<script src="@{'/public/javascripts/residenceValidation.js'}" type="text/javascript"></script>
+<script src="@{'/public/javascripts/addResidence.js'}" type="text/javascript"></script>

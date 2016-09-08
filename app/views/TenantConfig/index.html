@@ -1,0 +1,73 @@
+#{extends 'main.html' /} #{set title:'Tenant Homepage' /}
+<!-- TENANT HOMEPAGE -->
+<!-- Menu -->
+<section class="ui three item menu">
+	<a class="active item" href="/tconfig"><h3>MyAccount</h3></a>
+	<a class="item" href="/message"><h3>Contact</h3></a>
+	<a class="item" href="/tlogout"><h3>Logout</h3></a>
+</section>
+
+<!-- Main Content  -->
+<section class="ui segment">
+	<div class="ui stackable two column grid">
+
+		<!-- Left Column -->
+		<div class="ui column">
+			<h3>${name}'s Tenant Account</h3>
+
+			<!-- Terminate Tenancy Form -->
+			<form id="deleteTenancy" action="/deleteTenancy" method="GET" class="ui fluid form basic segment">
+					<h5 class="ui header">Current Residence</h5>
+					<label>Eircode</label>
+					<div class="field">
+						<input id="eircode" name="eircode" type="text" Value="${eircode}" readonly>
+					</div>
+					<button type="submit" class="ui blue submit button">Terminate
+						Tenancy</button>
+          <div id="notificationRemove"></div>
+          <div class="ui error message"></div>
+			</form>
+      <div class="ui section divider"></div>
+      
+			<!-- New Residence Form -->
+			<form id="changeResidence" class="ui fluid form basic segment" action="/newResidence" method="POST">
+					<h5>Select a New Residence from Vacant Properties</h5>
+					<div id="dropdownfield" class="field">
+						<select name="id" class="ui search dropdown">
+            <option value="">Residence by EIRCODE</option>
+							#{list items: vacantProperties, as:'residence'}
+							  <option class="vacant residence" value="${residence.id}">${residence.eircode}</option>
+							#{/list}
+						</select>
+					</div>
+					<button type="submit" class="ui blue submit button">Change
+						Tenancy</button>
+        <div id="notificationChange"></div>
+        <div class="ui error message"></div>
+			</form>
+		</div>
+
+		<!-- Right column -->
+		<div class="ui column">
+    <!-- Map with report form -->
+			<p>Size and position circle to find vacant properties</p>
+			<form action="/tgeneratereport" method="POST">
+				<div class="ui segment" id="map-canvas-report" class="ui embed"></div>
+				<button type="submit" class="ui blue submit button">Search</button>
+				<div style="visibility: hidden" name="circledata" id="circledata">
+					<input type="text" id="radius" name="radius">
+					<input type="text" id="lat" name="lat">
+		      <input type="text" id="lng" name="lng"> #{list items:
+          vacantProperties, as:'vacantResidence'}
+          <input type="text" class="residence"
+            value="${vacantResidence.location},Eircode: ${vacantResidence.eircode},Rent: ${vacantResidence.rent}">
+          #{/list}
+        </div>
+			</form>
+		</div>
+	</div>
+</section>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDX7xZ8Q_uYysdgojoZ-qhJtlpjXF3H85M&sensor=false&libraries=geometry"></script>
+<script src="@{'/public/javascripts/tenant.js'}" type="text/javascript"></script>
+<script src="@{'/public/javascripts/vacantResidencesMap.js'}" type="text/javascript"></script>

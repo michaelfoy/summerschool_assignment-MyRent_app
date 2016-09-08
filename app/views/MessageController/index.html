@@ -1,0 +1,36 @@
+#{extends 'main.html' /} #{set title:'Leave a message for the MyRent team' /}
+<!-- MESSAGE PAGE -->
+<!-- Menu -->
+<section class="ui one item menu">
+	<a class="item" href="/config"><h3>MyAccount</h3></a>
+</section>
+
+
+<!-- Message form -->
+<section class="ui segment">
+	<div class="ui grid">
+		<div class="eight wide column">
+			<form class="ui fluid form segment" action="/sendmessage" method="POST">
+					<h3 class="ui header">We would very much appreciate your feedback</h3>
+					<div class="two fields">
+						<div class="field">
+							<input placeholder="First name" name="firstName" type="text">
+						</div>
+						<div class="field">
+							<input placeholder="Last name" name="lastName" type="text">
+						</div>
+					</div>
+					<div class="ui fluid left icon input field">
+						<input placeholder="Email address" name="email" type="text">
+						<i class="user icon"></i>
+					</div>
+					<div class="field">
+						<textarea name="messageText" placeholder="Please leave a message..."></textarea>
+					</div>
+					<button type="submit" class="ui blue submit button"><i class="mail icon"></i>Send</button>
+				<div class="ui error message"></div>
+			</form>
+		</div>
+	</div>
+</section>
+<script type="text/javascript" src="@{'/public/javascripts/messageValidation.js'}"></script>

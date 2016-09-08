@@ -1,0 +1,46 @@
+#{extends 'main.html' /} #{set title:'Rent Chart' /}
+<!-- RENT CHART PAGE -->
+<!-- Menu -->
+<section class="ui four item menu">
+	<a class="item" href="/admin"><h3>Administrator Home</h3></a>
+	<a class="item" href="/report"><h3>Report</h3></a>
+	<a class="active item" href="/chart"><h3>Rent Chart</h3></a>
+	<a class="item" href="/logout"><h3>Logout</h3></a>
+</section>
+<script type="text/javascript" src="@{'/public/javascripts/jquery.canvasjs.min.js'}"></script>
+<section>
+	<div class="ui stackable two column grid segment">
+	
+	  <!-- Table listing landlords, eircodes, rent -->
+		<div class="ui column">
+		<h3>Landlord rental list</h3>
+		<table  class="ui celled left aligned table">
+			<thead>
+				<tr>
+					<th>Landlord</th>
+					<th>Eircode</th>
+					<th>Rent (€)</th>
+				</tr>
+			</thead>
+			<tbody>
+				#{list items:residences, as:'residence'}
+				<tr>
+					<td>${residence.landlord.firstName + " " +
+						residence.landlord.lastName}</td>
+					<td>${residence.eircode}</td>
+					<td>${residence.rent}</td>
+				</tr>
+				#{/list}
+			</tbody>
+		</table>
+		</div>
+		
+		<!-- Rent Pie Chart -->
+		<div class="ui column">
+    <div class="ui segment">
+		  <div id="chart" style="width: 100%; height: 300px"></div>
+    </div>
+		</div>
+	</div>
+</section>
+<script type="text/javascript" src="@{'/public/javascripts/chart.js'}"></script>

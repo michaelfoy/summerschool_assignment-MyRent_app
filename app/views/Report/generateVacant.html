@@ -1,0 +1,58 @@
+#{extends 'main.html' /} #{set title:'Get a residence report' /}
+<!-- TENANT REPORT OUTPUT PAGE -->
+
+<!-- Menu -->
+<section class="ui three item menu">
+	<a class="item" href="/tconfig"><h3>MyAccount</h3></a>
+	<a class="item" href="/message"><h3>Contact</h3></a>
+	<a class="item" href="/tlogout"><h3>Logout</h3></a>
+</section>
+
+<!-- Report Result-->
+<section>
+  <div class="ui segment">
+  <h2>Currently available properties</h2>
+    <table class="ui single center aligned line table">
+      <thead>
+        <tr>
+          <th>Commissioned by</th>
+          <th>Search radius (m)</th>
+          <th>Centre latitude</th>
+          <th>Centre longitude</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>${userName}</td>
+          <td>${area.radius}</td>
+          <td>${area.latcentre}</td>
+          <td>${area.lngcentre}</td>
+        </tr>
+      </tbody>
+    </table>
+		<table  class="ui celled left aligned table">
+			<thead>
+				<tr>
+					<th>Eircode</th>
+					<th>Date registered</th>
+					<th>Rent (€)</th>
+					<th>Bedrooms</th>
+					<th>Bathrooms</th>
+					<th>Area (m²)</th>
+				</tr>
+			</thead>
+			<tbody>
+				#{list items:results, as:'residence'}
+				<tr>
+					<td>${residence.eircode}</td>
+					<td>${residence.dateRegistered}</td>
+					<td>${residence.rent}</td>
+					<td>${residence.bedrooms}</td>
+					<td>${residence.numberBathrooms}</td>
+					<td>${residence.area}</td>
+				</tr>
+				#{/list}
+			</tbody>
+		</table>
+	</div>
+</section>

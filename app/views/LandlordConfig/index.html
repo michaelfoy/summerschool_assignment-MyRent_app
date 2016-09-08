@@ -1,0 +1,61 @@
+#{extends 'main.html' /} #{set title:'Landlord | Account' /}
+<!-- LANDLORD CONFIGURATION PAGE -->
+<!-- Menu -->
+<section class="ui four item menu">
+	<a class="active item" href="/lconfig"><h3>MyAccount</h3></a>
+	<a class="item" href="/lreport"><h3>Report</h3></a>
+	<a class="item" href="/message"><h3>Contact</h3></a>
+	<a class="item" href="/llogout"><h3>Logout</h3></a>
+</section>
+
+<section>
+	<div class="ui segment">
+		<h3>${user.firstName}'s Landlord Account</h3>
+
+		<!-- Form for modifying residence data -->
+		<div class="ui very padded raised segment">
+			<form action="/residencedata" method="GET">
+				<div class="ui form">
+					<div class="field">
+						<h3>Select a Residence</h3>
+						<select name="residenceId" class="ui search dropdown">
+							#{list items: properties, as:'residence'}
+							<option value="${residence.id}">${residence.eircode}</option>
+							#{/list}
+						</select>
+					</div>
+					<div style="visibility: hidden">
+						<input type="text" id="buttonChoice" name="buttonChoice"
+							value="buttonChoice">
+					</div>
+					<div class="fields">
+						<div class="field">
+							<button type="submit" class="ui blue submit button" name="edit"
+								id="edit">Edit Residence</button>
+						</div>
+						<div class="field">
+							<button type="submit" class="ui blue submit button" name="delete"
+								id="delete">Delete Residence</button>
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<!-- Form to add a new residence -->
+			<form action="/inputpage" method="GET">
+				<button class="ui right floated submit button" type="submit">Add
+					New Residence</button>
+			</form>
+		</div>
+
+		<!-- form for modifying landlord data -->
+		<div class="ui basic segment">
+			<form action="/editprofile" method="GET">
+				<button type="submit" class="ui blue submit button">Edit
+					Profile Info</button>
+			</form>
+		</div>
+	</div>
+</section>
+<script src="@{'/public/javascripts/dropdown.js'}" type="text/javascript"></script>
+<script src="@{'/public/javascripts/residenceData.js'}" type="text/javascript"></script>

@@ -1,0 +1,50 @@
+#{extends 'main.html' /} #{set title:'Landlords | Sign up' /}
+<!-- SIGN UP PAGE -->
+<!-- Menu -->
+<section class="ui three item menu">
+	<a class="item" href="/"><h3>Home</h3></a>
+	<a class="active item" href="/lsignup"><h3>Sign up</h3></a>
+	<a class="item" href="/llogin"><h3>Log in</h3></a>
+</section>
+
+<!-- signup form -->
+<section class="ui segment">
+	<div class="ui grid">
+		<div class="eight wide column">
+			<form class="ui fluid form segment" action="/lregister" method="POST">
+					<h3 class="ui header">Create a MyRent Landlord account</h3>
+					<h5>Register using a valid email address</h5>
+					<div class="two fields">
+						<div class="field">
+							<input placeholder="First Name" name="firstName" type="text">
+						</div>
+						<div class="field">
+							<input placeholder="Last Name" name="lastName" type="text">
+						</div>
+					</div>
+					<div class="ui fluid left icon input field">
+						<input type="text" name="address" placeholder="Address">
+            <i class="location arrow icon"></i>
+					</div>
+					<div class="ui fluid left icon input field">
+						<input placeholder="Email" name="email" type="text">
+						<i class="user icon"></i>
+					</div>
+					<div class="ui fluid left icon input field">
+						<input type="password" name="password" placeholder="Password">
+            <i class="lock icon"></i>
+					</div>
+					<div class="inline field">
+						<div class="ui checkbox">
+							<input id="conditions" type="checkbox" name="checkbox">
+              <label for="conditions">I agree to the
+								terms and conditions</label>
+						</div>
+					</div>
+					<button type="submit" class="ui blue submit button">Register</button>
+          <div class="ui error message"></div>
+			</form>
+		</div>
+	</div>
+</section>
+<script type="text/javascript" src="@{'/public/javascripts/landlordValidation.js'}"></script>

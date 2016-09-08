@@ -1,0 +1,129 @@
+Landlord(homer):
+    firstName: Homer
+    lastName: Simpson
+    email: homer@simpson.com
+    password: secret
+    address: 138 Nice St., Springfield, USA
+
+Landlord(marge):
+    firstName: Marge
+    lastName: Simpson
+    email: marge@simpson.com
+    password: secret
+    address: 138 Nice St., Springfield, USA
+    
+Landlord(bart):
+    firstName: Bart
+    lastName: Simpson
+    email: bart@simpson.com
+    password: secret
+    address: 138 Nice St., Springfield, USA
+
+Landlord(lisa):
+    firstName: Lisa
+    lastName: Simpson
+    email: lisa@simpson.com
+    password: secret
+    address: 138 Nice St., Springfield, USA
+    
+Landlord(maggie):
+    firstName: Maggie
+    lastName: Simpson
+    email: maggie@simpson.com
+    password: secret
+    address: 138 Nice St., Springfield, USA
+    
+Tenant(barney):
+    firstName: Barney
+    lastName: Gumble
+    email: barney@gumble.com
+    password: secret
+    residence: res1
+    
+Tenant(milhouse):
+    firstName: Milhouse
+    lastName: Vanhouten
+    email: milhouse@vanhouten.com
+    password: secret
+    residence: res2
+    
+Tenant(ned):
+    firstName: Ned
+    lastName: Flanders
+    email: ned@flanders.com
+    password: secret
+    residence: res3
+    
+Residence(res1):
+    location: 53.3777078,-6.0695484
+    occupancy: rented
+    eircode:  ABC1234
+    rent: 450
+    bedrooms: 3
+    numberBathrooms: 1
+    area: 120
+    residenceType: apartment|flat
+    dateRegistered: Mon 25 Jul 2016
+    landlord: homer
+    tenant: barney
+    
+Residence(res2):
+    location: 53.3506650,-6.1189869
+    eircode:  DEF5678
+    rent: 150
+    bedrooms: 1
+    numberBathrooms: 1
+    area: 80
+    residenceType: studio
+    dateRegistered: Tue 26 Jul 2016
+    landlord: maggie
+    tenant: milhouse
+    
+Residence(res3):
+    location: 53.2989902,-6.0887745
+    eircode:  GHI1234
+    rent: 700
+    bedrooms: 3
+    numberBathrooms: 2
+    area: 550
+    residenceType: house
+    dateRegistered: Wed 27 Jul 2016
+    landlord: lisa
+    tenant: ned
+    
+Residence(res4):
+    location: 53.2833934,-6.2755420
+    eircode:  JKL5678
+    rent: 200
+    bedrooms: 3
+    numberBathrooms: 2
+    area: 150
+    residenceType: apartment|flat
+    dateRegistered: Thu 28 Jul 2016
+    landlord: bart
+    
+Residence(res5):
+    location: 53.4145568,-6.1148670
+    eircode:  MNO1234
+    rent: 100
+    bedrooms: 2
+    numberBathrooms: 1
+    area: 300
+    residenceType: house
+    dateRegistered: Fri 29 Jul 2016
+    landlord: marge
+    
+Residence(res6):
+    location: 53.4906101,-6.0118702
+    eircode:  PQR5678
+    rent: 1000
+    bedrooms: 5
+    numberBathrooms: 3
+    area: 700
+    residenceType: studio
+    dateRegistered: Sat 30 Jul 2016
+    landlord: homer
+    
+Administrator(admin):
+    email: admin@witpress.ie
+    password: secret

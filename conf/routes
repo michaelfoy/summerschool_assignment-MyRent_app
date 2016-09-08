@@ -1,0 +1,78 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       Home.index
+
+#Administrator
+GET			/login																	Administrators.login
+POST		/authenticate														Administrators.authenticate
+GET			/admin																	Administrators.index
+GET			/regTenant															Administrators.registerTenant
+GET			/regLandlord														Administrators.registerLandlord
+POST		/deleteTenant														Administrators.deleteTenant
+POST		/deleteLandlord													Administrators.deleteLandlord
+GET			/logout																	Administrators.logout
+GET			/geoLoc																	Administrators.getLocations
+
+# Landlords
+GET			/lsignup																Landlords.signup
+GET			/llogin																	Landlords.login
+POST		/lregister															Landlords.register
+POST		/lauthenticate													Landlords.authenticate
+GET			/llogout																Landlords.logout
+
+#Landlord Config
+GET			/lconfig																LandlordConfig.index
+GET			/editprofile														LandlordConfig.editprofile
+GET	    /residencedata													LandlordConfig.residencedata
+POST	 	/profileinfo														LandlordConfig.profileinfo
+POST		/editResidence/{id}											LandlordConfig.residenceedit
+
+# Tenants
+GET			/tsignup																Tenants.signup
+GET			/tlogin																	Tenants.login
+POST		/tregister															Tenants.register
+POST		/tauthenticate													Tenants.authenticate
+GET			/tlogout																Tenants.logout
+
+#Tenant Config
+GET			/tconfig																TenantConfig.index
+GET			/deleteTenancy													TenantConfig.deleteTenancy
+POST		/newResidence														TenantConfig.newResidence
+GET			/vacRes																	TenantConfig.getVacantsData
+
+# Input Data
+GET			/inputpage															InputData.index
+POST    /inputdata/{id}													InputData.inputData
+
+#Report
+GET			/report																	Report.adminReport
+GET			/lreport																Report.index
+POST		/lgeneratereport												Report.generate
+POST		/tgeneratereport												Report.generateVacant
+
+#Residence Sort
+GET			/sortRented															ResidenceSort.rentalStatus
+GET			/sortRent																ResidenceSort.rent
+GET			/sortType																ResidenceSort.propertyType
+
+#Rent Chart
+GET			/chart																	RentChart.index
+GET			/getRentData														RentChart.chartData
+
+#Message
+GET		 /message																	MessageController.index
+POST	 /sendmessage															MessageController.send
+GET		 /config																	MessageController.config
+GET		 /logout																	MessageController.logout
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}

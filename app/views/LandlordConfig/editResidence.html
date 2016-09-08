@@ -1,0 +1,33 @@
+#{extends 'main.html' /} #{set title:'Edit Residence' /}
+<!-- EDIT RESIDENCE PAGE -->
+<!-- Menu -->
+<section class="ui four item menu">
+	<a class="active item" href="/lconfig"><h3>MyAccount</h3></a>
+	<a class="item" href="/lreport"><h3>Report</h3></a>
+	<a class="item" href="/message"><h3>Contact</h3></a>
+	<a class="item" href="/llogout"><h3>Logout</h3></a>
+</section>
+
+<!-- Edit form -->
+<section class="ui segment">
+	<div class="ui grid">
+		<div class="eight wide column">
+			<form class="ui fluid form segment" id="editResidence" action="/editResidence/${residence.id}" method="POST">
+					<h3 class="ui header">Edit Residence</h3>
+					<div class="two fields">
+						<label>Eircode</label>
+						<div class="field">
+							<input type="text" Value="${residence.eircode}" readonly>
+						</div>
+						<label>Rent</label>
+						<div class="field">
+							<input placeholder="€" name="rent" type="text">
+						</div>
+					</div>
+					<button type="submit" class="ui blue submit button">Edit</button>
+				<div class="ui error message"></div>
+			</form>
+		</div>
+	</div>
+</section>
+<script type="text/javascript" src="@{'/public/javascripts/residenceValidation.js'}"></script>

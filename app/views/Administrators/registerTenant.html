@@ -1,0 +1,47 @@
+#{extends 'main.html' /} #{set title:'Register Tenant' /}
+<!-- ADMIN REGISTER TENANT PAGE -->
+<!-- Menu -->
+<section class="ui four item menu">
+	<a class="item" href="/admin"><h3>Administrator Home</h3></a>
+	<a class="item" href="/report"><h3>Report</h3></a>
+	<a class="item" href="/chart"><h3>Rent Chart</h3></a>
+	<a class="item" href="/logout"><h3>Logout</h3></a>
+</section>
+
+<!-- signup form -->
+<section class="ui segment">
+	<div class="ui grid">
+		<div class="eight wide column">
+			<form class="ui fluid form segment" id="tenantSignUp" action="/tregister" method="POST">
+					<h3 class="ui header">Create a MyRent Tenant account</h3>
+					<h5>Register using a valid email address</h5>
+					<div class="two fields">
+						<div class="field">
+							<input placeholder="First Name" name="firstName" type="text">
+						</div>
+						<div class="field">
+							<input placeholder="Last Name" name="lastName" type="text">
+						</div>
+					</div>
+					<div class="ui fluid left icon input field">
+						<input placeholder="Email" name="email" type="text">
+						<i class="user icon"></i>
+					</div>
+					<div class="ui fluid left icon input field">
+						<input type="password" name="password"
+							placeholder="Password"> <i class="lock icon"></i>
+					</div>
+					<div class="inline field">
+						<div class="ui checkbox">
+							<input id="conditions" type="checkbox" name="checkbox">
+              <label for="conditions">I agree to the
+								terms and conditions</label>
+						</div>
+					</div>
+					<button type="submit" class="ui blue submit button">Register</button>
+          <div class="ui error message"></div>
+			</form>
+		</div>
+	</div>
+</section>
+<script type="text/javascript" src="@{'/public/javascripts/tenantValidation.js'}"></script>

@@ -1,0 +1,25 @@
+#{extends 'main.html' /} #{set title:'Tenants | Log in' /}
+<!-- TENANT LOG IN PAGE -->
+<!-- Menu -->
+<section class="ui three item menu">
+	<a class="item" href="/"><h3>Home</h3></a>
+	<a class="item" href="/tsignup"><h3>Sign up</h3></a>
+	<a class="active item" href="/tlogin"><h3>Log in</h3></a>
+</section>
+
+<!-- login form -->
+<section class="ui segment">
+<form class="ui fluid form segment" action="/tauthenticate" method="POST">
+      <h3 class="ui header">Tenant log in</h3>
+      <h5>Your username is the email you registered with</h5>
+      <div class="field">
+        <input placeholder="Email" name="email" type="text">
+      </div>
+      <div class="field">
+        <input placeholder="Password" type="password" name="password">
+      </div>
+      <button type="submit" class="ui blue submit button">Login</button>
+    <div class="ui error message"></div>
+</form>
+</section>
+<script type="text/javascript" src="@{'/public/javascripts/loginValidation.js'}"></script>

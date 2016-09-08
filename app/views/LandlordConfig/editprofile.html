@@ -1,0 +1,33 @@
+#{extends 'main.html' /} #{set title:'Edit profile' /}
+<!-- EDIT PROFILE PAGE -->
+<!-- Menu -->
+<section class="ui four item menu">
+	<a class="active item" href="/lconfig"><h3>MyAccount</h3></a>
+	<a class="item" href="/lreport"><h3>Report</h3></a>
+	<a class="item" href="/message"><h3>Contact</h3></a>
+	<a class="item" href="/llogout"><h3>Logout</h3></a>
+</section>
+
+<!-- Edit form -->
+<section class="ui segment">
+	<div class="ui grid">
+		<div class="eight wide column">
+			<form class="ui fluid form segment" action="/profileinfo" method="POST">
+					<h3 class="ui header">Edit Profile</h3>
+					<div class="two fields">
+						<div class="field">
+							<input placeholder="First Name" name="firstName" type="text">
+						</div>
+						<div class="field">
+							<input placeholder="Last Name" name="lastName" type="text">
+						</div>
+					</div>
+					<div class="ui fluid left icon input field">
+						<input placeholder="Address" name="address" type="text">
+						<i class="location arrow icon"></i>
+					</div>
+					<button type="submit" class="ui blue submit button">Edit</button>
+			</form>
+		</div>
+	</div>
+</section>

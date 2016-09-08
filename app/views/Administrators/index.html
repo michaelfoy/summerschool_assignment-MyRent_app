@@ -1,0 +1,91 @@
+#{extends 'main.html' /} #{set title:'Administrator' /}
+<!-- ADMINISTRATOR CONFIGURATION PAGE -->
+<!-- Menu -->
+<section class="ui four item menu">
+	<a class="active item" href="/admin"><h3>Administrator Home</h3></a>
+	<a class="item" href="/report"><h3>Report</h3></a>
+	<a class="item" href="/chart"><h3>Rent Chart</h3></a>
+	<a class="item" href="/logout"><h3>Logout</h3></a>
+</section>
+<!-- Main Content  -->
+<section class="ui segment">
+	<div class="ui stackable two column grid">
+
+		<!-- Left Column -->
+    <div class="ui column">
+      <h3>Administrator Account</h3>
+      <h4 class="ui header">Register Tenants and Landlords</h4>
+      <div class="ui two column grid">
+        <div class="ui column">
+          <!-- Register new Tenant form -->
+          <form action="/regTenant" method="GET">
+            <div class="ui fluid form basic segment">
+              <button type="submit" class="ui blue submit button">Register
+                New Tenant</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Register new Landlord form -->
+        <div class="ui column">
+          <form action="/regLandlord" method="GET">
+            <div class="ui fluid form basic segment">
+              <button type="submit" class="ui blue submit button">Register
+                New Landlord</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="ui section divider"></div>
+      
+      <h4>Remove Tenants and Landlords</h4>
+      <div class="ui two column grid">
+      
+      <!--  Delete Tenant -->
+        <div class="ui column">
+          <form id="deleteTenant" class="ui fluid form basic segment">
+              <div class="field">
+                <select id="tenantDropdown" name="tenant" class="ui search dropdown">
+                <option class="default text" value="">Tenants</option>
+                  #{list items:tenants, as:'tenant'}
+                  <option class="tenant input" value="${tenant.id}">${tenant.firstName}
+                    ${tenant.lastName}</option> #{/list}
+                </select>
+              </div>
+              <button type="submit" class="ui blue submit button" id="deleteTenant">Remove
+                Tenant</button>
+              <div class="ui basic segment" id="notificationTenant"></div>
+              <div class="ui error message"></div>
+          </form>
+        </div>
+        <!--  Delete Landlord -->
+        <div class="ui column">
+          <form id="deleteLandlord" class="ui fluid form basic segment">
+              <div class="field">
+                <select id="landlordDropdown" name="landlord" class="ui search dropdown">
+                <option class="default text" value="">Landlords</option>
+                  #{list items:landlords, as:'landlord'}
+                  <option class="landlord input" value="${landlord.id}">${landlord.firstName}
+                    ${landlord.lastName}</option> #{/list}
+                </select>
+              </div>
+              <button type="submit" class="ui blue submit button">Remove
+                Landlord</button>
+              <div class="ui basic segment" id="notificationLandlord"></div>
+              <div class="ui error message"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column -->
+		<div class="ui column">
+			<h5>Property Locations</h5>
+			<div class="ui segment" id="map-canvas-report" class="ui embed"></div>
+		</div>
+	</div>
+</section>
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDX7xZ8Q_uYysdgojoZ-qhJtlpjXF3H85M&sensor=false&libraries=geometry"></script>
+<script src="@{'/public/javascripts/adminmap.js'}" type="text/javascript"></script>
+<script src="@{'/public/javascripts/administrator.js'}" type="text/javascript"></script>

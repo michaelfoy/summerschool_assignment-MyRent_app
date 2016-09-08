@@ -1,0 +1,77 @@
+#{extends 'main.html' /} #{set title:'Get a residence report' /}
+<!-- ADMIN REPORT OUTPUT PAGE -->
+
+<!-- Menu -->
+<section class="ui four item menu">
+	<a class="item" href="/admin"><h3>Administrator Home</h3></a>
+	<a class="active item" href="/report"><h3>Report</h3></a>
+	<a class="item" href="/chart"><h3>Rent Chart</h3></a>
+	<a class="item" href="/logout"><h3>Logout</h3></a>
+</section>
+
+<!-- Main Content-->
+<section>
+	<div class="ui segment">
+		<h2>Administration Report - All current properties</h2>
+		<h3>List by</h3>
+
+		<!-- Sorting Buttons -->
+		<div class="ui top attached compact buttons">
+			<form action="/sortRented" method="GET">
+				<button type="submit" class="ui labeled icon button">
+					<i class="privacy icon"></i>Rental Status
+				</button>
+			</form>
+			<form action="/sortType" method="GET">
+				<button type="submit" class="ui labeled icon button">
+					<i class="home icon"></i>Property Type
+				</button>
+			</form>
+			<form action="/sortRent" method="GET">
+				<button type="submit" class="ui labeled icon button">
+					<i class="sort icon"></i>Rent
+				</button>
+			</form>
+			<form action="/report" method="GET">
+				<button type="submit" class="ui labeled icon button">
+					<i class="undo icon"></i>Default
+				</button>
+			</form>
+		</div>
+		
+		<!-- Report Results -->
+		<table class="ui celled left aligned table">
+			<thead>
+				<tr>
+					<th>Eircode</th>
+					<th>Date registered</th>
+					<th>Type</th>
+					<th>Number bedrooms</th>
+					<th>Number bathrooms</th>
+					<th>Rent (€)</th>
+					<th>Area (m²)</th>
+					<th>Landlord</th>
+					<th>Tenant</th>
+				</tr>
+			</thead>
+			<tbody>
+				#{list items:residences, as:'residence'}
+				<tr>
+					<td>${residence.eircode}</td>
+					<td>${residence.dateRegistered}</td>
+					<td>${residence.residenceType}</td>
+					<td>${residence.bedrooms}</td>
+					<td>${residence.numberBathrooms}</td>
+					<td>${residence.rent}</td>
+					<td>${residence.area}</td>
+					<td>${residence.landlord.firstName + " " +
+						residence.landlord.lastName}</td>
+					<td>#{if residence.tenant == null }Not occupied #{/if}
+						#{else}${residence.tenant.firstName} ${residence.tenant.lastName}
+						#{/else}</td>
+				</tr>
+				#{/list}
+			</tbody>
+		</table>
+	</div>
+</section>
